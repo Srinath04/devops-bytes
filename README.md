@@ -24,25 +24,28 @@ Read access to /var/log/auth.log or /var/log/secure (may require sudo).
 **Installation and Usage**
 
 Download the Script:
+```
 wget https://raw.githubusercontent.com/Srinath04/devops-bytes/main/server-stats.sh
-
+```
 Or clone this repository:
+```
 git clone https://github.com/Srinath04/devops-bytes.git
-
+```
 
 Make it Executable:
+```
 chmod +x server-stats.sh
-
+```
 
 Run the Script:
+```
 ./server-stats.sh
-
+```
 
 If you see Failed Logins: Cannot access log files or any permission issues, run with sudo: sudo ./simple_server-stats.sh
 
-
-
-Sample Output  
+**Sample Output**
+```
 ===== Server Stats =====  
 Time: Wed Jan 1 06:00:00 IST 2025  
 
@@ -57,6 +60,7 @@ Failed Logins: 1
 
 ...  
 ===== End of Stats =====  
+```
 
 **Notes**  
 Failed Logins: Counts attempts in the current /var/log/auth.log (Debian-based) or /var/log/secure (Red Hat-based), typically covering 1–7 days, depending on your log rotation policy.  
@@ -68,3 +72,5 @@ Compatibility: Tested on Linux Mint, Ubuntu, and similar Linux distributions. Ma
 **Important**  
 This script is optimized for Linux-based systems. 
 Separate scripts for macOS and Windows based desktop systems will be added in future updates.
+
+This project is part of [roadmap.sh]([url](https://roadmap.sh/projects/server-stats)) DevOps projects.
