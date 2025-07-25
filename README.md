@@ -73,4 +73,4 @@ Compatibility: Tested on Linux Mint, Ubuntu, and similar Linux distributions. Ma
 This script is optimized for Linux-based systems. 
 Separate scripts for macOS and Windows based desktop systems will be added in future updates.
 
-This project is part of [roadmap.sh]([url](https://roadmap.sh/projects/server-stats)) DevOps projects.
+This project is part of [roadmap.sh](https://roadmap.sh/projects/server-stats) DevOps projects.
