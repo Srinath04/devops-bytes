@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guess-game
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guess-game
+  template:
+    metadata:
+      labels:
+        app: guess-game
+    spec:
+      containers:
+      - name: guess-game
+        image: guess-game:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
