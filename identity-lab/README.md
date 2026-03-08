@@ -12,19 +12,7 @@ Components used:
 
 ## Architecture
 
-User / Client
-      │
-      │ 1. Request token
-      ▼
-Keycloak Identity Provider (OIDC)
-      │
-      │ 2. Issue JWT access token
-      ▼
-API Server (FastAPI Resource Server)
-      │
-      │ 3. Verify JWT signature using JWKS
-      ▼
-Protected Endpoint
+![Identity Architecture](screenshots/architecture-diagram.png)
 
 
 ## Authentication Flow
@@ -43,36 +31,37 @@ This lab simulates how enterprise applications authenticate API requests using a
 
 ### Health Check
 
-GET /health
+`GET /health`
 
 Returns service status.
 
 Example response:
-
+```
 {
   "status": "ok",
   "service": "identity-lab-api"
 }
-
+```
 
 ### Protected Endpoint
 
-GET /protected
+`GET /protected`
 
 Requires a valid JWT access token.
 
+```
 Authorization header:
-
 Authorization: Bearer <access_token>
+```
 
 Example response:
-
+```
 {
   "message": "Access granted",
   "note": "Real Business data and logic follows",
   "user": "srinath_keyc"
 }
-
+```
 
 ## Screenshots
 
@@ -101,7 +90,6 @@ Example response:
 ![Health Endpoint](screenshots/06-health-endpoint.png)
 
 
-
 ## Setup / How to Run
 
 ### Prerequisites
@@ -122,10 +110,14 @@ source venv/bin/activate
 
 Install required packages:
 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
 ## Run the API server
-`uvicorn api_server:app --host 0.0.0.0 --port 9000`
+```
+uvicorn api_server:app --host 0.0.0.0 --port 9000
+```
 
 The API server will be available at:
 `http://localhost:9000`
@@ -172,3 +164,18 @@ can be implemented in enterprise environments using other platforms.
 | JWT Access Token | Access Token issued by Identity Provider |
 | JWKS Endpoint | Public Key Endpoint used for token verification |
 | FastAPI Resource Server | Backend microservice (Spring Boot / Node / Go) |
+
+## Where such Architecture Is Used
+
+The identity architecture demonstrated in this lab is commonly used in modern enterprise systems.
+
+Examples include:
+
+- Azure Entra ID / Azure AD issuing OAuth2 access tokens
+- Okta or Ping Identity acting as OpenID Connect providers
+- Microservices verifying JWT tokens using JWKS endpoints
+- API gateways enforcing authentication before forwarding requests
+- Internal platform services validating user identity for protected APIs
+
+In production environments, this pattern allows applications to delegate authentication
+to a centralized identity provider while resource servers independently verify tokens.
